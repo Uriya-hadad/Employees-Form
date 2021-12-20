@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {getHello} = require('../controllers/routesFunctions');
-router.route('/').post(getHello);
+const {getHello,clearDb} = require('../controllers/routesFunctions');
+router.route('/').post(getHello).delete(clearDb);
 
 module.exports = router;

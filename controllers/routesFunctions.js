@@ -10,6 +10,14 @@ const getHello = async (req, res) => {
         res.status(500).send("something went wrong...");
     }
 }
+const clearDb = async (req, res) => {
+    try {
+        const result = await templates.deleteMany({});
+        const count = result.deletedCount
+        res.status(200).json({success: true, count});
+    } catch (e) {
+        res.status(404).json({success: false,count:0});
+    }
+}
 
-
-module.exports = {getHello}
+module.exports = {getHello, clearDb}
