@@ -21,8 +21,8 @@ submit.addEventListener('click', async () => {
 clearDb.addEventListener('click', async () => {
     try {
         const a = await axios.delete('/');
-        console.log(a)
-        msg.innerHTML = `the number of item we deleted is ${a.data.count}.`
+        msg.innerHTML = `The number of item we deleted is ${a.data.count}.`
+        msg.style.visibility = 'visible';
     } catch (e) {
         console.log(e)
     }

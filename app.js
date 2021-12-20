@@ -1,4 +1,5 @@
 const express = require('express');
+const serverless = require('serverless-http');
 const app = express();
 const connectDb = require('./db/connectDb')
 const router = require("./route/route");
@@ -9,7 +10,7 @@ const port = process.env.PORT || 5000;
 app.use(express.static('./public'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json())
-app.use(router);
+app.use(`/.netlify/functions/api`,router);
 
 const start = async (url) => {
     try {
@@ -22,3 +23,5 @@ const start = async (url) => {
     }
 }
 start(process.env.DB_URl)
+
+module.exports.handler = serverless(app)
