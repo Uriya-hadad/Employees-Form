@@ -6,13 +6,19 @@
     <title>My App</title>
 </head>
 <body>
-<form action="/singUp" method="post" class="form">
+<!--<form action="/" method="post" class="form">-->
+<!--<form class="form">-->
+<div class="form">
     <h4 class="text header">Enter a number</h4>
     <div class="form-group">
         <label class='text form-label' for="inputNum">enter a num:</label>
         <input type="number" id="inputNum" name="inputNum">
-        <button type="submit" class='btn'>Submit</button>
+        <button type="submit" class='btn' id = 'bth'>Submit</button>
+        <small class="small" id="msg">!</small>
     </div>
-</form>
+</div>
+<!--</form>-->
+<script src="testTT.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 </html>

@@ -41,7 +41,11 @@ body {
     display: block;
     width: 100%;
 }
-
+.small{
+    display: block;
+    margin:10px 0;
+    visibility: hidden;
+}
 .btn {
     border-radius: 5px;
     margin: 20px  0 0 0;
