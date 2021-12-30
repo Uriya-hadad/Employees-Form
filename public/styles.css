@@ -2,6 +2,16 @@
     box-sizing: border-box;
 }
 
+#employees{
+    color: #2a9972;
+    font-size:18px;
+    width: 100%;
+    align-content: center;
+}
+#employees p {
+    text-align: center;
+}
+
 body {
     background-color: #e8d6d6;
     display: flex;
@@ -22,6 +32,10 @@ body {
     font-family: sans-serif;
     font-size: 18px;
 }
+.form-label, .inputField{
+    display: block;
+    margin:10px 0;
+}
 
 .form {
     width: 300px;
@@ -41,15 +55,29 @@ body {
     display: block;
     width: 100%;
 }
-.small{
+
+.small {
     display: block;
-    margin:10px 0;
+    margin: 10px 0;
+    color: #ac1fb6;
+    font-size:15px;
+}
+
+.hide{
     visibility: hidden;
+}
+.flex-container{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: auto auto ;
+    grid-template-rows: auto auto ;
+    grid-gap: 5px;
+}
+#btnNewEmployee{
+    grid-column: 1/3;
 }
 .btn {
     border-radius: 5px;
-    margin: 20px  0 0 0;
-    width: 100%;
     padding: 10px 30px;
     border-color: transparent;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -57,4 +85,7 @@ body {
 
 .btn:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+#msgError{
+    height:30px;
 }

@@ -1,16 +1,21 @@
 const express = require('express');
-const serverless = require('serverless-http');
 const app = express();
 const connectDb = require('./db/connectDb')
-const router = require("./route/route");
-require('dotenv').config()
-
+const {addNewEmployee, getAllEmployees,deleteEmployee} = require('./controllers/routesFunctions');
 const port = process.env.PORT || 5000;
+const {body} = require("express-validator");
+const {check, validationResult} = require('express-validator')
+
+require('dotenv').config()
 
 app.use(express.static('./public'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json())
-app.use(`/.netlify/functions/api`,router);
+
+app.post('/', addNewEmployee);
+app.delete('/', deleteEmployee);
+app.get('/allEmployees', getAllEmployees);
+
 
 const start = async (url) => {
     try {
@@ -22,6 +27,4 @@ const start = async (url) => {
         console.log(e)
     }
 }
-start(process.env.DB_URl)
-
-module.exports.handler = serverless(app)
+start(process.env.DB_URl);

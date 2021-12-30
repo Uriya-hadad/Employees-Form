@@ -1,23 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang = "en">
 <head>
-    <link rel="stylesheet" href="styles.css">
-    <meta charset="UTF-8">
+    <link rel = "stylesheet" href = "styles.css">
+    <meta charset = "UTF-8">
     <title>My App</title>
 </head>
 <body>
-<div class="form">
-    <h4 class="text header">Enter a number</h4>
-    <div class="form-group">
-        <label class='text form-label' for="inputNum">enter a num:</label>
-        <input type="number" id="inputNum" name="inputNum">
-        <button type="submit" class='btn' id = 'bth'>Submit</button>
-        <button type="button" class="btn" id="clearDb">clear DB</button>
-        <small class="small" id="msg">!</small>
+    <div class = "form">
+        <h4 class = "text header">Add a new employer:</h4>
+        <div class = "form-group">
+            <label class = 'text form-label' for = "inputId">ID:</label>
+            <input type = "number" id = "inputId" name = "inputNum" placeholder = "my ID">
+            <label class = 'text form-label' for = "inputName">Name:</label>
+            <input type = "text" id = "inputName" name = "inputNum" placeholder = "my Name">
+            <label class = 'text form-label' for = "inputAddress">Address:</label>
+            <input type = "text" class = "inputField" id = "inputAddress" name = "inputNum" placeholder = "my Address">
+            <div class = "flex-container">
+                <button type = "submit" class = 'btn' id = 'btnNewEmployee'>Add a new employee</button>
+                <button type = "button" class = "btn" id = "btnGetAll">Get all employees</button>
+                <button type = "button" class = "btn" id = "btnDeleteEmployee">Delete employee</button>
+            </div>
+            <small class = "small" id = "msgEmployees">Employees:</small>
+            <div id = "employees"></div>
+            <small class = "small hide" id = "msgError">Currently there are no employees...</small>
+        </div>
     </div>
-</div>
-<!--</form>-->
-<script src="testTT.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type = "module" src = "testTT.js"></script>
+    <script src = "https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 </html>
