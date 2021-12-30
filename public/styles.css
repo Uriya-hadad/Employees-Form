@@ -3,13 +3,20 @@
 }
 
 #employees{
-    color: #2a9972;
-    font-size:18px;
+    color: #1238aa;
     width: 100%;
     align-content: center;
+
 }
-#employees p {
-    text-align: center;
+#employees ol {
+    list-style:circle;
+    display: block;
+    font-size: 12px;
+    margin:15px 0;
+    border-radius: 5px;
+    padding: 10px 0 10px 20px;
+    border: 2px solid #6fa5ce;
+    overflow: hidden;
 }
 
 body {

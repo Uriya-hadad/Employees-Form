@@ -42,10 +42,7 @@ getAllEmployees.addEventListener('click', async () => {
             messageDisplay();
         } else {
             allEmployees.data.forEach((employee) => {
-                const tag = document.createElement("p",);
-                const text = document.createTextNode(employee.name);
-                tag.appendChild(text);
-                employeesList.appendChild(tag);
+                addChild(employee);
             })
         }
     } catch (e) {
@@ -82,3 +79,20 @@ function messageDisplay() {
     }, 2000);
 }
 
+function addChild(employee) {
+    const ol = document.createElement('ol');
+    const name = document.createElement('li');
+    const id = document.createElement('li');
+    const email = document.createElement('li');
+    const address = document.createElement('li');
+    const nameText = document.createTextNode(employee.name);
+    const idText = document.createTextNode(employee.id);
+    const emailText = document.createTextNode(employee.email);
+    const addressText = document.createTextNode(employee.address);
+    name.appendChild(nameText);
+    id.appendChild(idText);
+    email.appendChild(emailText);
+    address.appendChild(addressText);
+    ol.append(name,id,email,address);
+    employeesList.appendChild(ol);
+}
