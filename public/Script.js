@@ -1,16 +1,14 @@
-function $(source) {
-    return document.querySelector(source)
-}
+import {addChild, messageDisplay, getEmail,$} from './func.js';
 
 const addNewEmployee = $('#btnNewEmployee');
 const getAllEmployees = $('#btnGetAll');
 const deleteEmployee = $('#btnDeleteEmployee')
-const msgEmployee = $('#msgEmployees')
 const msgError = $('#msgError')
 const id = $('#inputId');
 const name = $('#inputName');
 const address = $('#inputAddress');
 const employeesList = $('#employees');
+
 addNewEmployee.addEventListener('click', async () => {
     try {
         const email = getEmail(name.value);
@@ -24,10 +22,10 @@ addNewEmployee.addEventListener('click', async () => {
             msgError.innerHTML = (`${name.value} has been joined successfully!`);
         } else if (result.data.valid) {
             msgError.innerHTML = (`There is ealready a employee with id: ${id.value}`);
-        }else {
+        } else {
             msgError.innerHTML = (`insert a valid input!`);
         }
-        messageDisplay();
+        messageDisplay(msgError);
     } catch (e) {
         console.log(e)
     }
@@ -39,10 +37,10 @@ getAllEmployees.addEventListener('click', async () => {
         const allEmployees = await axios.get('/allEmployees');
         if (allEmployees.data.length === 0) {
             msgError.innerHTML = 'Currently there are no employees...';
-            messageDisplay();
+            messageDisplay(msgError);
         } else {
             allEmployees.data.forEach((employee) => {
-                addChild(employee);
+                addChild(employee,employeesList);
             })
         }
     } catch (e) {
@@ -54,7 +52,7 @@ getAllEmployees.addEventListener('click', async () => {
 deleteEmployee.addEventListener('click', async () => {
     if (id.value.trim() === "") {
         msgError.innerHTML = (`Please provide a valid id`);
-        return messageDisplay();
+        return messageDisplay(msgError);
     }
     msgError.innerHTML = (`There is not employee with id ${id.value}`);
     const result = await axios.delete('/', {data: {id: id.value}});
@@ -62,37 +60,5 @@ deleteEmployee.addEventListener('click', async () => {
     } else {
         msgError.innerHTML = (`Delete employee with id ${id.value}`);
     }
-    messageDisplay();
+    messageDisplay(msgError);
 })
-
-const getEmail = (name) => {
-    let email = name.trim();
-    email = name.replaceAll(' ', ".");
-    email += '@mycoolcompany.com';
-    return email;
-}
-
-function messageDisplay() {
-    msgError.style.visibility = 'visible';
-    setTimeout(() => {
-        msgError.style.visibility = 'hidden'
-    }, 2000);
-}
-
-function addChild(employee) {
-    const ol = document.createElement('ol');
-    const name = document.createElement('li');
-    const id = document.createElement('li');
-    const email = document.createElement('li');
-    const address = document.createElement('li');
-    const nameText = document.createTextNode(employee.name);
-    const idText = document.createTextNode(employee.id);
-    const emailText = document.createTextNode(employee.email);
-    const addressText = document.createTextNode(employee.address);
-    name.appendChild(nameText);
-    id.appendChild(idText);
-    email.appendChild(emailText);
-    address.appendChild(addressText);
-    ol.append(name,id,email,address);
-    employeesList.appendChild(ol);
-}
